@@ -3,7 +3,7 @@
     {
        "williamboman/mason.nvim",
 
-        config = function() 
+        config = function()
             require("mason").setup()
 
         end
@@ -15,7 +15,7 @@
 
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pylsp", "marksman" },
+                ensure_installed = { "lua_ls", "pylsp" }, -- What languages need to be installed
             })
 
         end
@@ -27,12 +27,14 @@
 
         config = function()
             local lspconfig = require("lspconfig")
+
+            -- Setup for each language
             lspconfig.lua_ls.setup({})
             lspconfig.pylsp.setup({})
-            lspconfig.marksman.setup({})
-            
-            vim.keymap.set('n', '<Leader>ld', vim.lsp.buf.hover, {})
-            -- vim.keymap.set('n', '<C-a>', vim.lsp.buf.code_action, {})
+
+            vim.keymap.set('i', '<C-v>', '<C-X><C-O>', {}) -- Show and accept language sujestions
+            vim.keymap.set({'i', 'n'}, '<C-h>', vim.lsp.buf.hover, {}) -- Show documentation
+            vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, {}) -- Rename variables
         end
     }
 }

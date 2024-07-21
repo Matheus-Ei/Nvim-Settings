@@ -8,9 +8,10 @@ vim.cmd("set shiftwidth=4")
 vim.g.mapleader = "<Space>"
 vim.cmd("set timeoutlen=5000")
 
--- Set alt+z = Esc
-vim.keymap.set({'n', 'i', 'v', 'x', 's', 'c', 't', 'o'}, '<C-s>', '<Esc>', { noremap = true, silent = true })
+-- Set alt+s = Esc
+-- vim.keymap.set({'n', 'i', 'v', 'x', 's', 'c', 't', 'o'}, '<C-s>', '<Esc>', { noremap = true, silent = true })
 
+-- Set colors to the notifications
 vim.opt.termguicolors = true
 
 -- Load lazy vim package manager
