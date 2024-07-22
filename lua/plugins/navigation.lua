@@ -11,7 +11,7 @@ return {
         },
 
         config = function()           
-            vim.keymap.set('n', '<Leader>b', ':Neotree<CR>', { noremap = true, silent = true, desc = "Open tree" }) -- Open the side tree
+            vim.keymap.set('n', '<Leader>t', ':Neotree<CR>', { noremap = true, silent = true, desc = "Open tree" }) -- Open the side tree
         end
     },
 
@@ -51,7 +51,7 @@ return {
 
             harpoon:setup()
 
-            vim.keymap.set("n", "<Leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc="Open harpoon" }) -- Toggle harpoon menu
+            vim.keymap.set("n", "<Leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc="Open harpoon" }) -- Toggle harpoon menu
 
             -- Toggle between options
             vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
