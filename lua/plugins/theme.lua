@@ -29,5 +29,14 @@ return {
                 }
             })
         end
-    }
+    },
+
+    -- Dashboard plugin alpha
+    -- https://github.com/goolord/alpha-nvim?tab=readme-ov-file
+    {
+        'goolord/alpha-nvim',
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.dashboard'.config)
+        end
+    };
 }
