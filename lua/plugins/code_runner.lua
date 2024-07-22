@@ -12,8 +12,10 @@ return {
             filetype = {
                 python = "python3 -u",
             },
+            project = { },
         })
 
-        vim.keymap.set('n', '<Leader>r', ':RunCode <CR>', {desc = "Run code"}) -- Sets the keymap to run code
+        vim.keymap.set('n', '<Leader>rc', ':RunCode <CR>', {desc = "Run code"}) -- Sets the keymap to run code
+        vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false, desc = "Run project" }) -- Set to run configured project
     end
 }
