@@ -14,6 +14,6 @@ return {
             },
         })
 
-        vim.keymap.set('n', '<Leader>r', ':RunCode <CR>', {}) -- Sets the keymap to run code
+        vim.keymap.set('n', '<Leader>r', ':RunCode <CR>', {desc = "Run code"}) -- Sets the keymap to run code
     end
 }

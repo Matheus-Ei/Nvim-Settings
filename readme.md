@@ -6,18 +6,20 @@ The plugin manager used on this couple of settings and plugins is `lazy`
 
 ## Current features
 - Code running
-- File navigation
-- Botton line for information
+- Navigation
+- Botton line
 - Notifications
 - Github theme
 - Identation sujestion
 - Nvim command sujestions
+- Terminal integration
 
 
 # Dependencies on the operational system
-## Telescope to find files
-1. sudo apt-get install ripgrep
-2. sudo apt install fd-find
-## Nerdfonts
-- Go to https://www.nerdfonts.com/font-downloads
-- Instale uma nerdfont
+Here are some dependencies that you should install to run this repository on neovim correctly
+- Telescope dependencies
+  - sudo apt-get install ripgrep
+  - sudo apt install fd-find
+- Nerdfonts
+  - Go to https://www.nerdfonts.com/font-downloads
+  - Install any nerdfont
