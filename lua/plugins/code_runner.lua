@@ -12,7 +12,14 @@ return {
             filetype = {
                 python = "python3 -u",
             },
-            project = { },
+            project = {
+            --    ["~/project/path"] = {
+            --        name = "Project Name",
+            --        description = "Project description",
+            --        file_name = "project_run.file",
+            --        command = "command to run the project"
+            --    },
+            }
         })
 
         vim.keymap.set('n', '<Leader>rc', ':RunCode <CR>', {desc = "Run code"}) -- Sets the keymap to run code
