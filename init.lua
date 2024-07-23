@@ -7,13 +7,16 @@ vim.cmd("set number") -- Activates the line counter
 
 -- Set the leader
 vim.g.mapleader = "<Space>"
-vim.cmd("set timeoutlen=5000")
 
 -- Set colors to the notifications
 vim.opt.termguicolors = true
 
+
 -- Load lazy vim package manager
 require("config.lazy")
+
+
+vim.cmd("set timeoutlen=5000")
 
 vim.keymap.set('n', '<Leader>s', ':wall<CR>', { desc = "Save all" }) -- Save all files open
 vim.keymap.set({ 'n' }, '<Leader>l', ':Lazy<CR>', { desc = "Open lazy" })
