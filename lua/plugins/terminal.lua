@@ -1,20 +1,19 @@
--- Toggleterm
--- https://github.com/akinsho/toggleterm.nvim?tab=readme-ov-file
-
 return {
+    -- Toggleterm
+    -- https://github.com/akinsho/toggleterm.nvim?tab=readme-ov-file
     {
         'akinsho/toggleterm.nvim',
-        version = "*", 
+        version = "*",
         opts = {},
 
         config = function()
             require("toggleterm").setup({
                 open_mapping = [[<C-s>]], -- Closes the terminal
 
-                direction = 'float', -- 'vertical' | 'horizontal' | 'tab' | 'float'
+                direction = 'float',
                 close_on_exit = false,
                 float_opts = {
-                    border = 'curved', -- 'single' | 'double' | 'shadow' | 'curved'
+                    border = 'curved',
                     winblend = 3,
                 }
             })
