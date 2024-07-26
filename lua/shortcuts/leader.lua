@@ -33,7 +33,6 @@ function M.harpoon()
     -- Toggle between options
     vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
     vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
-
     vim.keymap.set("n", "<C-a>", function() harpoon:list():add() end) -- Add a file to harpoon
 end
 
