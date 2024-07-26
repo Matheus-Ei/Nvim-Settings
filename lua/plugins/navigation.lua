@@ -36,8 +36,8 @@ return {
                     },
                 },
                 window = {
-                    position = "left",
-                    width = 40,
+                    position = "float",
+                    width = 30,
                     mapping_options = {
                         noremap = true,
                         nowait = true,
@@ -51,7 +51,6 @@ return {
                         ["<cr>"] = "open",
                         ["<esc>"] = "cancel",
                         ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-                        ["l"] = "focus_preview",
                         ["S"] = "open_split",
                         ["s"] = "open_vsplit",
                         ["t"] = "open_tabnew",
