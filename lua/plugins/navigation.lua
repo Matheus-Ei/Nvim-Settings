@@ -165,9 +165,8 @@ return {
                             ["ot"] = { "order_by_type", nowait = false },
                         }
                     }
-                }
+                },
             })
-            vim.keymap.set('n', '<Leader>t', ':Neotree<CR>', { noremap = true, silent = true, desc = "Open tree" })
         end
     },
 
@@ -176,15 +175,6 @@ return {
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' },
-
-        config = function()
-            vim.keymap.set('n', '<Leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true, desc = "Open file finder"}) -- Open file finder
-
-            vim.keymap.set('n', '<Leader>gb', ':Telescope git_branches<CR>', { noremap = true, silent = true, desc = 'Git branch'})
-            vim.keymap.set('n', '<Leader>gc', ':Telescope git_commits<CR>', { noremap = true, silent = true, desc = 'Git commits list'})
-            vim.keymap.set('n', '<Leader>gh', ':Telescope git_stash<CR>', { noremap = true, silent = true, desc = 'Git stash list'})
-            vim.keymap.set('n', '<Leader>gs', ':Telescope git_status<CR>', { noremap = true, silent = true, desc = 'Git status'})
-        end
     },
 
     -- Telescope UI select
@@ -206,20 +196,6 @@ return {
 
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
-
-        config = function()
-            local harpoon = require("harpoon")
-
-            harpoon:setup()
-
-            vim.keymap.set("n", "<Leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc="Open harpoon" }) -- Toggle harpoon menu
-
-            -- Toggle between options
-            vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
-            vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
-
-            vim.keymap.set("n", "<C-a>", function() harpoon:list():add() end) -- Add a file to harpoon
-        end
     }
 }
 
