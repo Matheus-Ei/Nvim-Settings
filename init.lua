@@ -29,5 +29,5 @@ vim.keymap.set(modes, 'ç', 'l', { noremap = true, silent = true })
 
 
 -- Setup shortcuts
-local setShortcuts = require("shortcuts.setShortcuts")
+local setShortcuts = require("config.shortcuts")
 setShortcuts.setup()
