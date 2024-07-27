@@ -13,6 +13,7 @@ end
 
 
 function M.setShort()
+    M.basic()
 end
 
 
