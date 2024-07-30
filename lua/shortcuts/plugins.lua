@@ -28,14 +28,18 @@ function M.harpoon()
     local harpoon = require("harpoon")
     harpoon:setup()
 
-    vim.keymap.set("n", "<Leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc="Open harpoon" }) -- Toggle harpoon menu
+    vim.keymap.set("n", "<Leader>hs", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc="Show harpoon" }) -- Toggle harpoon menu
+    vim.keymap.set("n", "<Leader>ha", function() harpoon:list():add() end, { desc="Add to harpoon"}) -- Add a file to harpoon
 
     -- Toggle between options
     vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
     vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
-    vim.keymap.set("n", "<C-a>", function() harpoon:list():add() end) -- Add a file to harpoon
 end
 
+function M.history()
+    vim.keymap.set("n", "<Leader>es", function() require("memento").toggle() end, { desc="Show history" })
+    vim.keymap.set("n", "<Leader>ec", function() require("memento").clear_history() end, { desc="Clear history" })
+end
 
 
 function M.setShort()
@@ -44,6 +48,7 @@ function M.setShort()
     M.git()
     M.harpoon()
     M.runner()
+    M.history()
 end
 
 

@@ -11,7 +11,7 @@ return {
         },
 
         config = function()
-            require("neo-tree").setup({
+            local api = require("neo-tree").setup({
                 close_if_last_window = false,
                 popup_border_style = "rounded",
                 enable_git_status = true,
@@ -115,10 +115,8 @@ return {
                             ["ot"] = { "order_by_type", nowait = false },
                         },
                         fuzzy_finder_mappings = {
-                            ["<down>"] = "move_cursor_down",
-                            ["<C-n>"] = "move_cursor_down",
-                            ["<up>"] = "move_cursor_up",
-                            ["<C-p>"] = "move_cursor_up",
+                            ["k"] = "move_cursor_down",
+                            ["l"] = "move_cursor_up",
                         },
                     },
                 },
@@ -195,6 +193,12 @@ return {
 
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
+    -- History
+    -- https://github.com/gaborvecsei/memento.nvim
+    {
+        "gaborvecsei/memento.nvim"
     }
 }
 
