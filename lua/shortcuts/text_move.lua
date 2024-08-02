@@ -10,7 +10,7 @@ end
 function M.moveLineUp()
     vim.cmd('normal 0')
     vim.cmd('normal dd')
-    vim.cmd('normal l')
+    vim.cmd('normal k')
     vim.cmd('normal P')
 end
 
@@ -28,17 +28,17 @@ function M.moveBlockUp()
     vim.cmd('normal "ay')
     vim.cmd('normal gv')
     vim.cmd('normal ddd')
-    vim.cmd('normal lO')
+    vim.cmd('normal kO')
     vim.cmd('normal 0"aP')
 end
 
 
 function M.setShort()
-    vim.keymap.set('n', '<M-k>', M.moveLineDown, {})
-    vim.keymap.set('n', '<M-l>', M.moveLineUp, {})
+    vim.keymap.set('n', '<M-j>', M.moveLineDown, {})
+    vim.keymap.set('n', '<M-k>', M.moveLineUp, {})
 
-    vim.keymap.set('v', '<M-k>', M.moveBlockDown, {})
-    vim.keymap.set('v', '<M-l>', M.moveBlockUp, {})
+    vim.keymap.set('v', '<M-j>', M.moveBlockDown, {})
+    vim.keymap.set('v', '<M-k>', M.moveBlockUp, {})
 end
 
 return M

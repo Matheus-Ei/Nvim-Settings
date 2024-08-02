@@ -2,7 +2,7 @@ local M = {}
 
 
 function M.rmWhiteSpaces()
-    vim.cmd('normal g_ç')
+    vim.cmd('normal g_l')  
     vim.cmd('normal d$')
 end
 
