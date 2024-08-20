@@ -19,6 +19,7 @@ return {
                     { name = 'nvim_lsp' }
                 }
             })
+
             vim.keymap.set('i', '<C-e>', '<C-x><C-o>', { silent = true }) -- Accept completion
         end
     }

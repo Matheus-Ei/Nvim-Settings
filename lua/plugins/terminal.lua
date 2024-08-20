@@ -12,13 +12,14 @@ return {
 
                 direction = 'float',
                 close_on_exit = false,
+
                 float_opts = {
                     border = 'curved',
                     winblend = 3,
-                }
+                },
             })
 
-            vim.keymap.set({ 'n' }, '<C-s>', ':ToggleTerm dir=./ name=Terminal <CR>', {}) -- Opens the terminal on the current folder
+            vim.keymap.set({ 'n' }, '<C-s>', ':ToggleTerm dir=./ name=Terminal 1 <CR>', {}) -- Opens the terminal on the current folder
         end
     }
 }

@@ -16,20 +16,6 @@ return {
                 popup_border_style = "rounded",
                 enable_git_status = true,
                 enable_diagnostics = true,
-                default_component_configs = {
-                    indent = {
-                        indent_size = 4,
-                        padding = 1,
-                        with_markers = true,
-                        indent_marker = "│",
-                        last_indent_marker = "└",
-                        highlight = "NeoTreeIndentMarker",
-                        with_expanders = nil,
-                        expander_collapsed = "",
-                        expander_expanded = "",
-                        expander_highlight = "NeoTreeExpander",
-                    },
-                },
                 window = {
                     position = "float",
                     width = 30,
@@ -38,23 +24,10 @@ return {
                         nowait = true,
                     },
                     mappings = {
-                        ["<2-LeftMouse>"] = "open",
                         ["<cr>"] = "open",
                         ["<esc>"] = "cancel",
-                        ["S"] = "open_split",
-                        ["s"] = "open_vsplit",
-                        ["t"] = "open_tabnew",
-                        ["a"] = {
-                            "add",
-                            config = {
-                                show_path = "none" -- "none", "relative", "absolute"
-                            }
-                        },
                         ["d"] = "delete",
                         ["r"] = "rename",
-                        ["y"] = "copy_to_clipboard",
-                        ["x"] = "cut_to_clipboard",
-                        ["p"] = "paste_from_clipboard",
                         ["c"] = "copy",
                         ["m"] = "move",
                         ["q"] = "close_window",
@@ -77,28 +50,10 @@ return {
                         leave_dirs_open = false,
                     },
                     group_empty_dirs = false,
-                    hijack_netrw_behavior = "open_default",
-                    use_libuv_file_watcher = false,
                     window = {
                         mappings = {
                             ["<bs>"] = "navigate_up",
                             ["."] = "set_root",
-                            ["H"] = "toggle_hidden",
-                            ["/"] = "fuzzy_finder",
-                            ["D"] = "fuzzy_finder_directory",
-                            ["#"] = "fuzzy_sorter",
-                            ["f"] = "filter_on_submit",
-                            ["<c-x>"] = "clear_filter",
-                            ["[g"] = "prev_git_modified",
-                            ["]g"] = "next_git_modified",
-                            ["o"] = { "show_help", nowait=false, config = { title = "Order by", prefix_key = "o" }},
-                            ["oc"] = { "order_by_created", nowait = false },
-                            ["od"] = { "order_by_diagnostics", nowait = false },
-                            ["og"] = { "order_by_git_status", nowait = false },
-                            ["om"] = { "order_by_modified", nowait = false },
-                            ["on"] = { "order_by_name", nowait = false },
-                            ["os"] = { "order_by_size", nowait = false },
-                            ["ot"] = { "order_by_type", nowait = false },
                         },
                     },
                 },
@@ -106,22 +61,6 @@ return {
                     follow_current_file = {
                         enabled = true,
                         leave_dirs_open = false,
-                    },
-                    group_empty_dirs = true,
-                    show_unloaded = true,
-                    window = {
-                        mappings = {
-                            ["bd"] = "buffer_delete",
-                            ["<bs>"] = "navigate_up",
-                            ["."] = "set_root",
-                            ["o"] = { "show_help", nowait=false, config = { title = "Order by", prefix_key = "o" }},
-                            ["oc"] = { "order_by_created", nowait = false },
-                            ["od"] = { "order_by_diagnostics", nowait = false },
-                            ["om"] = { "order_by_modified", nowait = false },
-                            ["on"] = { "order_by_name", nowait = false },
-                            ["os"] = { "order_by_size", nowait = false },
-                            ["ot"] = { "order_by_type", nowait = false },
-                        }
                     },
                 },
             })
@@ -159,7 +98,35 @@ return {
     -- History
     -- https://github.com/gaborvecsei/memento.nvim
     {
-        "gaborvecsei/memento.nvim"
-    }
+        "gaborvecsei/memento.nvim",
+
+        config = function()
+            vim.g.memento_history = 60
+            vim.g.memento_shorten_path = false
+            vim.g.memento_window_width = 100
+            vim.g.memento_window_height = 35
+        end
+    },
+
+    -- Buffers
+    -- https://github.com/j-morano/buffer_manager.nvim
+    {
+        "j-morano/buffer_manager.nvim",
+
+        config = function()
+            require("buffer_manager").setup({
+                focus_alternate_buffer = false,
+                short_file_names = true,
+                short_term_names = true,
+                loop_nav = false,
+                highlight = 'Normal:BufferManagerBorder',
+                win_extra_options = {
+                    winhighlight = 'Normal:BufferManagerNormal',
+                },
+            })
+
+            vim.keymap.set("n", "<Leader>b", ':lua require("buffer_manager.ui").toggle_quick_menu() <CR>', { desc = "Buffer manager" })
+        end
+    },
 }
 

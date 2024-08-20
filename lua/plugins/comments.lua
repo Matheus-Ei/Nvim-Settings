@@ -3,7 +3,17 @@
 return {
     {
         'numToStr/Comment.nvim',
-        opts = {
-        }
+        config = function()
+            require("Comment").setup({
+                {
+                    toggler = {
+                        ---Line-comment toggle keymap
+                        line = 'gc',
+                        ---Block-comment toggle keymap
+                        block = 'gc',
+                    },
+                }
+            })
+        end
     }
 }
