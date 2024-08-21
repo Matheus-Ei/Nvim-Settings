@@ -15,7 +15,6 @@ The plugin manager used on this couple of settings and plugins is `lazy`
 - Terminal integration
 
 ## Next features
-- Git
 - Search and filter
 - Language inside translator = https://github.com/potamides/pantran.nvim
 - Implement a debugger

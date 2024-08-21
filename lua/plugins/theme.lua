@@ -123,16 +123,6 @@ return {
         }
     },
 
-    -- Nvim notify
-    -- https://dotfyle.com/plugins/rcarriga/nvim-notify
-    {
-        "rcarriga/nvim-notify",
-
-        config = function()
-            vim.notify = require("notify")
-        end
-    },
-
     -- Cursor line
     -- https://github.com/yamatsum/nvim-cursorline
     {
@@ -152,5 +142,18 @@ return {
                 }
             }
         end
+    },
+
+    -- Noice - To cmdline and notify
+    -- https://github.com/folke/noice.nvim
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+        },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
     }
 }
