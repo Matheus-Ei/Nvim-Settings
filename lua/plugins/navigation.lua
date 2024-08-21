@@ -108,7 +108,7 @@ return {
         end
     },
 
-    -- Buffers
+    -- Buffers management
     -- https://github.com/j-morano/buffer_manager.nvim
     {
         "j-morano/buffer_manager.nvim",
@@ -124,9 +124,32 @@ return {
                     winhighlight = 'Normal:BufferManagerNormal',
                 },
             })
-
-            vim.keymap.set("n", "<Leader>b", ':lua require("buffer_manager.ui").toggle_quick_menu() <CR>', { desc = "Buffer manager" })
         end
     },
+
+    -- Workspaces management
+    -- https://github.com/GnikDroy/projections.nvim?tab=readme-ov-file
+    {
+        'gnikdroy/projections.nvim',
+        config = function()
+            require("projections").setup({
+                workspaces = {
+                    -- Set workspaces that have projects inside with git repositories
+                    { "~/Documents/Github", { ".git" } },
+                    { "~/Code", { ".git" } },
+                },
+            })
+        end
+    },
+
+    -- Markers
+    -- https://github.com/chentoast/marks.nvim?tab=readme-ov-file
+    {
+        "chentoast/marks.nvim",
+
+        config = function()
+            require("marks").setup()
+        end
+    }
 }
 
