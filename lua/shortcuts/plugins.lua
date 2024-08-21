@@ -1,11 +1,6 @@
 local M = {}
 
 
--- Diverse plugins
-function M.runner()
-    vim.keymap.set('n', '<Leader>r', ':RunCode <CR>', {desc = "Run code"}) -- Sets the keymap to run code
-end
-
 function M.basic()
     vim.keymap.set({ 'n' }, '<Leader>l', ':Lazy<CR>', { desc = "Open lazy" }) -- Open lazy menu
 end
@@ -54,13 +49,15 @@ function M.terminal()
 
     vim.keymap.set({ 't' }, '<C-k>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermKil ") end, {})
     vim.keymap.set({ 't' }, '<C-a>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermNew") vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i", true, true, true), 'n', true) end, {})
+
+    -- Set the run code
+    vim.keymap.set('n', '<Leader>rp', function() vim.cmd(':FloatermNew cd %:p:h; source .venv/bin/activate; python3 -u %') end, {desc = "Run python"}) -- Python
 end
 
 
 -- Set shortcuts
 function M.setShort()
     -- Diverse plugins
-    M.runner()
     M.basic()
     M.terminal()
 
