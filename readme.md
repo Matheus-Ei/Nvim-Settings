@@ -18,11 +18,8 @@ The plugin manager used on this couple of settings and plugins is `lazy`
 - Git
 - Search and filter
 - Language inside translator = https://github.com/potamides/pantran.nvim
-- Line swaps plugin
-- Smooth scrolling = https://github.com/karb94/neoscroll.nvim
 - Implement a debugger
 - Implement a tester inside neovim
-- Better shortcuts
 
 # Dependencies on the operational system
 Here are some dependencies that you should install to run this repository on neovim correctly

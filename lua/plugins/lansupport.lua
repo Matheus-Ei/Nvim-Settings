@@ -32,7 +32,7 @@ return {
             lspconfig.lua_ls.setup({})
             lspconfig.pylsp.setup({})
 
-            vim.keymap.set({'i', 'n'}, '<C-h>', vim.lsp.buf.hover, {}) -- Show documentation
+            vim.keymap.set({'i', 'n'}, '<M-h>', vim.lsp.buf.hover, {}) -- Show documentation
             vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, {}) -- Rename variables
         end
     },

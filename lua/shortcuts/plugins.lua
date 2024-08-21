@@ -43,12 +43,26 @@ function M.workspaces()
     vim.keymap.set("n", "<Leader>w", function() vim.cmd("Telescope projections") end, { desc = "Workspaces manager" })
 end
 
+function M.terminal()
+    vim.keymap.set({ 'n' }, '<C-t>', ':FloatermToggle <CR>', {})
+
+    vim.keymap.set({ 't' }, "<C-e>", [[<C-\><C-n>]], {})
+    vim.keymap.set({ 't' }, '<C-t>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermToggle") end, {})
+
+    vim.keymap.set({ 't' }, '<C-p>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermPrev") vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i", true, true, true), 'n', true) end, {})
+    vim.keymap.set({ 't' }, '<C-n>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermNext") vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i", true, true, true), 'n', true) end, {})
+
+    vim.keymap.set({ 't' }, '<C-k>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermKil ") end, {})
+    vim.keymap.set({ 't' }, '<C-a>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermNew") vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i", true, true, true), 'n', true) end, {})
+end
+
 
 -- Set shortcuts
 function M.setShort()
     -- Diverse plugins
     M.runner()
     M.basic()
+    M.terminal()
 
     -- Navigation options
     M.navigation()
