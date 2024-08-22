@@ -51,7 +51,8 @@ function M.terminal()
     vim.keymap.set({ 't' }, '<C-a>', function() vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), 'n', true) vim.cmd("FloatermNew") vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i", true, true, true), 'n', true) end, {})
 
     -- Set the run code
-    vim.keymap.set('n', '<Leader>rp', function() vim.cmd(':FloatermNew cd %:p:h; source .venv/bin/activate; python3 -u %') end, {desc = "Run python"}) -- Python
+    vim.keymap.set('n', '<Leader>rp', function() vim.cmd(':FloatermNew --autoclose=0 cd %:p:h; source .venv/bin/activate; python3 -u %') end, {desc = "Run python"}) -- Python
+    vim.keymap.set('n', '<Leader>rj', function() vim.cmd(':FloatermNew --autoclose=0 cd %:p:h; node %') end, {desc = "Run javascript"}) -- Javascript / nodejs
 end
 
 
