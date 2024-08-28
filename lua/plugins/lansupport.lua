@@ -15,7 +15,7 @@ return {
 
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pylsp", "bashls", "tsserver", "clangd" }, -- What languages need to be installed
+                ensure_installed = { "lua_ls", "pylsp", "bashls", "tsserver", "clangd", "html", "cssls" }, -- What languages need to be installed
             })
 
         end
@@ -34,6 +34,8 @@ return {
             lspconfig.bashls.setup({})
             lspconfig.tsserver.setup({}) -- :LspInstall tsserver
             lspconfig.clangd.setup({})
+            lspconfig.html.setup({})
+            lspconfig.cssls.setup({})
 
             vim.keymap.set({'i', 'n'}, '<M-h>', vim.lsp.buf.hover, {}) -- Show documentation
             vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, {}) -- Rename variables

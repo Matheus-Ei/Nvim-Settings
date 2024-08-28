@@ -9,13 +9,13 @@ return {
         end
     },
 
-    -- Hardtime
-    -- https://github.com/m4xshen/hardtime.nvim
-    {
-        "m4xshen/hardtime.nvim",
-        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        opts = {}
-    },
+    -- -- Hardtime
+    -- -- https://github.com/m4xshen/hardtime.nvim
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    --     opts = {}
+    -- },
 
     -- Autosave
     -- https://github.com/okuuva/auto-save.nvim
