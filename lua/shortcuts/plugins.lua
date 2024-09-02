@@ -26,12 +26,15 @@ function M.harpoon()
 end
 
 function M.history()
-    vim.keymap.set("n", "<Leader>h", function() require("memento").toggle() end, { desc="Show history" })
-    vim.keymap.set("n", "<M-h>", function() require("memento").clear_history() end, { desc="Clear history" })
+    vim.keymap.set("n", "<Leader>hs", function() require("memento").toggle() end, { desc="Show history" })
+    vim.keymap.set("n", "<Leader>hc", function() require("memento").clear_history() end, { desc="Clear history" })
 end
 
 function M.buffers()
     vim.keymap.set("n", "<Leader>b", ':lua require("buffer_manager.ui").toggle_quick_menu() <CR>', { desc = "Buffer manager" })
+
+    vim.keymap.set("n", "<S-p>", ':lua require("buffer_manager.ui").nav_prev() <CR>', {})
+    vim.keymap.set("n", "<S-n>", ':lua require("buffer_manager.ui").nav_next() <CR>', {})
 end
 
 function M.workspaces()
