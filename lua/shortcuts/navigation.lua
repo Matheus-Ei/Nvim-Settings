@@ -2,11 +2,11 @@ local M = {}
 
 
 function M.nextParagraph()
-    vim.keymap.set( 'n', '<S-k>', '{', {} )
+    vim.keymap.set( { 'n', 'v' } , '<S-k>', '{', {} )
 end
 
 function M.prevParagraph()
-    vim.keymap.set( 'n', '<S-j>', '}', {} )
+    vim.keymap.set( { 'n', 'v' }, '<S-j>', '}', {} )
 end
 
 
