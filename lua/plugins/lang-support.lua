@@ -40,6 +40,33 @@ return {
             vim.keymap.set({'i', 'n'}, '<M-h>', vim.lsp.buf.hover, {}) -- Show documentation
             vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, {}) -- Rename variables
         end
-    }
+    },
+
+    -- Prettier
+    -- https://github.com/prettier/vim-prettier?tab=readme-ov-file
+    {
+        "prettier/vim-prettier", -- sudo npm install -g prettier
+        build = "yarn install --frozen-lockfile --production",
+
+        config = function()
+            vim.g['prettier#autoformat'] = 0
+        end
+    },
+
+    -- Snippets
+    -- https://github.com/L3MON4D3/LuaSnip
+    -- https://github.com/rafamadriz/friendly-snippets
+    {
+        "L3MON4D3/LuaSnip",
+
+        dependencies = { "rafamadriz/friendly-snippets" },
+
+        build = "make install_jsregexp",
+
+        config = function()
+            local ls = require("luasnip")
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
+    },
 }
 

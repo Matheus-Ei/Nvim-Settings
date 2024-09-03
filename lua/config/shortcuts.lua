@@ -13,8 +13,8 @@ function M.setup()
         if typ == 'file' and name:match("%.lua$") then
             local module_name = 'shortcuts.' .. name:gsub("%.lua$", "")
             local ok, module = pcall(require, module_name)
-            if ok and module.setShort then
-                module.setShort()
+            if ok and module.config then
+                module.config()
             end
         end
     end

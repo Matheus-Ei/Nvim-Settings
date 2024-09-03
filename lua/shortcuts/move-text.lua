@@ -14,7 +14,7 @@ function M.moveLineUp()
     vim.cmd('normal P')
 end
 
-function M.setShort()
+function M.config()
     vim.keymap.set('n', '<C-j>', M.moveLineDown, {})
     vim.keymap.set('n', '<C-k>', M.moveLineUp, {})
 end
