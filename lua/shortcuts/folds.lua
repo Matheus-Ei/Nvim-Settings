@@ -2,7 +2,7 @@ local M = {}
 
 
 function M.openAll()
-   vim.keymap.set('n', '<Leader>do', function() vim.cmd('normal zR') end, {desc = "Open all folds"})
+    vim.keymap.set('n', '<Leader>do', function() vim.cmd('normal zR') end, {desc = "Open all folds"})
 end
 
 function M.closeAll()

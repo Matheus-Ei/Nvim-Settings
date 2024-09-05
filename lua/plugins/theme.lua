@@ -119,7 +119,10 @@ return {
         end,
 
         opts = {
-            icons = { mappings=false }
+            icons = { mappings=false },
+            triggers = {
+                { "<leader>", mode = { "n", "v" } }
+            },
         }
     },
 

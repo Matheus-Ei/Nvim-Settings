@@ -1,7 +1,7 @@
 return {
     -- Mason
     {
-       "williamboman/mason.nvim",
+        "williamboman/mason.nvim",
 
         config = function()
             require("mason").setup()
@@ -15,7 +15,7 @@ return {
 
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pylsp", "bashls", "tsserver", "clangd", "html", "cssls" }, -- What languages need to be installed
+                ensure_installed = { "lua_ls", "pylsp", "bashls", "ts_ls", "clangd", "html", "cssls" }, -- What languages need to be installed
             })
 
         end
@@ -32,7 +32,7 @@ return {
             lspconfig.lua_ls.setup({})
             lspconfig.pylsp.setup({})
             lspconfig.bashls.setup({})
-            lspconfig.tsserver.setup({}) -- :LspInstall tsserver
+            lspconfig.ts_ls.setup({}) -- :LspInstall tsserver
             lspconfig.clangd.setup({})
             lspconfig.html.setup({})
             lspconfig.cssls.setup({})
@@ -68,5 +68,17 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
         end
     },
+
+    -- To Auto-close tags html and jsx
+    -- https://github.com/windwp/nvim-ts-autotag
+    {
+        "windwp/nvim-ts-autotag",
+
+        config = function()
+            require("nvim-ts-autotag").setup()
+        end,
+
+        event = "InsertEnter",
+    }
 }
 
