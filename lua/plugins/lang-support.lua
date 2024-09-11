@@ -36,9 +36,6 @@ return {
             lspconfig.clangd.setup({})
             lspconfig.html.setup({})
             lspconfig.cssls.setup({})
-
-            vim.keymap.set({'i', 'n'}, '<M-h>', vim.lsp.buf.hover, {}) -- Show documentation
-            vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, {}) -- Rename variables
         end
     },
 
