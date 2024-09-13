@@ -16,6 +16,8 @@ function M.navigation()
     vim.keymap.set('n', '<Leader>t', function() vim.cmd('Neotree') end, { noremap = true, silent = true, desc = "Open tree" })
 
     vim.keymap.set('n', '<Leader>s', function() vim.cmd('Telescope find_files') end, { noremap = true, silent = true, desc = "Search files"}) -- Open file finder
+
+    vim.keymap.set('n', '<Leader>g', function() vim.cmd('Telescope live_grep') end, { noremap = true, silent = true, desc = "Grep keywords"}) -- sudo apt install ripgrep
 end
 
 

@@ -158,5 +158,5 @@ return {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         }
-    },
+    }
 }
