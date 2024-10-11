@@ -23,20 +23,10 @@ return {
         "okuuva/auto-save.nvim",
         opts = {
             enabled = true,
-            execution_message = {
-                enabled = true,
-
-                message = function()
-                    return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
-                end,
-
-                dim = 0.18,
-                cleaning_interval = 1250,
-            },
             trigger_events = {
                 immediate_save = { "BufLeave", "FocusLost", "TextChanged" }, -- vim events that trigger an immediate save
                 defer_save = { "InsertLeave" }, -- vim events that trigger a deferred save
-                cancel_defered_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
+                cancel_deferred_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
             },
             condition = nil,
             write_all_buffers = true,

@@ -18,7 +18,7 @@ end
 function M.run()
     vim.keymap.set('n', '<Leader>rp', function() vim.cmd(':FloatermNew --autoclose=0 cd %:p:h; source .venv/bin/activate; python3 -u %') end, {desc = "Run python"}) -- Python
     vim.keymap.set('n', '<Leader>rj', function() vim.cmd(':FloatermNew --autoclose=0 cd %:p:h; node %') end, {desc = "Run javascript"}) -- Javascript / nodejs
-    vim.keymap.set('n', '<Leader>rl', function() vim.cmd('LiveServerStart') end, {desc = "Run live server"}) -- html / Liveserver
+    -- vim.keymap.set('n', '<Leader>rl', function() vim.cmd('LiveServerStart') end, {desc = "Run live server"}) -- html / Liveserver
 end
 
 

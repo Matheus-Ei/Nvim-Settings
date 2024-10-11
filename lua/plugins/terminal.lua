@@ -5,7 +5,7 @@ return {
         "voldikss/vim-floaterm"
     },
 
-    -- LiveServer
+--[[     -- LiveServer
     -- https://github.com/barrett-ruth/live-server.nvim
     {
         'barrett-ruth/live-server.nvim',
@@ -14,4 +14,5 @@ return {
         cmd = { 'LiveServerStart', 'LiveServerStop' },
         config = true
     },
+]]
 }
