@@ -15,9 +15,8 @@ return {
 
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pylsp", "bashls", "ts_ls", "clangd", "html", "cssls" }, -- What languages need to be installed
+                ensure_installed = { "lua_ls", "pylsp", "bashls", "ts_ls", "clangd", "html", "cssls", "sqls", "ast_grep" }, -- What languages need to be installed
             })
-
         end
     },
 
@@ -32,10 +31,11 @@ return {
             lspconfig.lua_ls.setup({})
             lspconfig.pylsp.setup({})
             lspconfig.bashls.setup({})
-            lspconfig.ts_ls.setup({}) -- :LspInstall tsserver
+            lspconfig.ts_ls.setup({})
             lspconfig.clangd.setup({})
             lspconfig.html.setup({})
             lspconfig.cssls.setup({})
+            lspconfig.ast_grep.setup({})
         end
     },
 

@@ -4,7 +4,6 @@ local M = {}
 function M.setup()
     local path = vim.fn.stdpath('config') .. '/lua/shortcuts'
     local handle = vim.loop.fs_scandir(path)
-    local result = {}
 
     while true do
         local name, typ = vim.loop.fs_scandir_next(handle)

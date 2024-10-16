@@ -8,8 +8,8 @@ return {
         config = function()
             require('github-theme').setup({})
 
-         	vim.cmd('colorscheme github_dark_default')
-	    end,
+            vim.cmd('colorscheme github_dark_default')
+        end,
     },
 
     -- Identation helper plugin
@@ -23,7 +23,7 @@ return {
                     enable = true,
                 },
                 indent = {
-                    enable = true,
+                    enable = false,
                 }
             })
         end
@@ -96,20 +96,60 @@ return {
         build = ":TSUpdate",
 
         config = function ()
-        local configs = require("nvim-treesitter.configs")
+            local configs = require("nvim-treesitter.configs")
 
-        configs.setup({
+            configs.setup({
                 ensure_installed = "all",
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
             })
+            require'nvim-treesitter.configs'.setup {
+                ensure_installed = {
+                    "bash", "c", "cpp", "html", "javascript", "json", "lua",
+                    "python", "typescript", "css", "go", "rust", "java"
+                },
+
+                auto_install = true,
+
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+
+                indent = {
+                    enable = true
+                },
+
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        init_selection = "gnn",
+                        node_incremental = "grn",
+                        node_decremental = "grm",
+                        scope_incremental = "grc",
+                    },
+                },
+
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
+                        },
+                    },
+                },
+            }
         end
     },
 
     -- Whitch key
     -- https://dotfyle.com/plugins/folke/which-key.nvim
-     {
+    {
         "folke/which-key.nvim",
         event = "VeryLazy",
 
@@ -152,8 +192,9 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        opts = {
-        },
+
+        opts = {},
+
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
