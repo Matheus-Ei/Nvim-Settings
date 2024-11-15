@@ -21,12 +21,16 @@ function M.run()
     -- vim.keymap.set('n', '<Leader>rl', function() vim.cmd('LiveServerStart') end, {desc = "Run live server"}) -- html / Liveserver
 end
 
+function M.commands()
+    vim.keymap.set('n', '<Leader>v', ':',{desc = "Run vim command"})
+end
 
 
 -- Set shortcuts
 function M.config()
     M.terminal()
     M.run()
+    M.commands()
 end
 
 
