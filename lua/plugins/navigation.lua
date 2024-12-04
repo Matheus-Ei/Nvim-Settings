@@ -69,6 +69,7 @@ return {
 
     -- Telescope
     -- https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter
+    -- Sudo pacman -Syu ripgrep
     {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         dependencies = { 'nvim-lua/plenary.nvim' },
