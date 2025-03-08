@@ -1,11 +1,11 @@
 return {
-    -- Floaterm
-    -- https://github.com/voldikss/vim-floaterm#lazygit
-    {
-        "voldikss/vim-floaterm"
-    },
+  -- Floaterm
+  -- https://github.com/voldikss/vim-floaterm#lazygit
+  {
+    "voldikss/vim-floaterm"
+  },
 
---[[     -- LiveServer
+  --[[     -- LiveServer
     -- https://github.com/barrett-ruth/live-server.nvim
     {
         'barrett-ruth/live-server.nvim',
