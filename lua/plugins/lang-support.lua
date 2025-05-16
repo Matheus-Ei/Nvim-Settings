@@ -53,6 +53,7 @@ return {
     end
   },
 
+--[[ 
   -- Null-ls
   -- https://github.com/jose-elias-alvarez/null-ls.nvim
   {
@@ -106,6 +107,7 @@ return {
       })
     end,
   },
+ ]]
 
   -- Snippets
   -- https://github.com/L3MON4D3/LuaSnip
