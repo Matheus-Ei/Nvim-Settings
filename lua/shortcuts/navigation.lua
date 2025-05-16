@@ -19,7 +19,7 @@ function M.navigation()
 
   vim.keymap.set('n', '<Leader>g', function() vim.cmd('Telescope live_grep') end, { noremap = true, silent = true, desc = "Grep keywords"}) -- sudo apt install ripgrep
 
-  vim.keymap.set('n', '<Leader>R', function() vim.cmd('Telescope lsp_references') end, { noremap = true, silent = true, desc = "Find references"})
+  vim.keymap.set('n', '<Leader>r', function() vim.cmd('Telescope lsp_references') end, { noremap = true, silent = true, desc = "Find references"})
 end
 
 
