@@ -11,7 +11,6 @@ function M.goPrevParagraph()
   vim.keymap.set( { 'n', 'v' }, '<S-j>', '}', {} )
 end
 
-
 function M.navigation()
   vim.keymap.set('n', '<Leader>t', function() vim.cmd('Neotree') end, { noremap = true, silent = true, desc = "Open tree" })
 
@@ -46,6 +45,8 @@ function M.buffers()
 
   vim.keymap.set("n", "<M-p>", function() vim.cmd('lua require("buffer_manager.ui").nav_prev()') end, {})
   vim.keymap.set("n", "<M-n>", function() vim.cmd('lua require("buffer_manager.ui").nav_next()') end, {})
+
+  vim.keymap.set( { 'n', 'v' } , '<M-k>', function() vim.cmd('bdelete') end, {} )
 end
 
 

@@ -149,7 +149,15 @@ return {
     "chentoast/marks.nvim",
 
     config = function()
-      require("marks").setup()
+      require("marks").setup({
+        mappings = {
+          set_next = "ma",
+          next = "mk",
+          prev = 'mj',
+          delete_buf = 'mD',
+          delete_line = 'md',
+        }
+      })
     end
   }
 }

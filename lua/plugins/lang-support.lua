@@ -9,6 +9,73 @@ return {
     end
   },
 
+  -- Treesitter textobjects
+  -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        textobjects = {
+          lsp_interop = {
+            enable = true,
+            border = 'none',
+
+            floating_preview_opts = {},
+            peek_definition_code = {
+              ["<leader>df"] = "@function.outer",
+              ["<leader>dF"] = "@class.outer",
+            },
+          },
+
+          swap = {
+            enable = false,
+            swap_next = {
+              ["<leader>a"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<leader>A"] = "@parameter.inner",
+            },
+          },
+
+          move = {
+            enable = true,
+            set_jumps = true,
+
+            goto_next = {
+              ["<leader>mj"] = "@function.outer",
+              -- ["<leader>mcj"] = "@conditional.outer",
+              -- ["<leader>mJ"] = "@class.outer",
+            },
+
+            goto_previous = {
+              ["<leader>mk"] = "@function.outer",
+              -- ["<leader>mK"] = "@class.outer",
+              -- ["<leader>mdk"] = "@conditional.outer",
+            }
+          },
+
+          select = {
+            enable = true,
+
+            lookahead = true,
+
+            keymaps = {
+              ["<leader>fo"] = "@function.outer",
+              ["<leader>fi"] = "@function.inner",
+            },
+            selection_modes = {
+              ['@parameter.outer'] = 'v', -- charwise
+              ['@function.outer'] = 'V', -- linewise
+              ['@class.outer'] = '<c-v>', -- blockwise
+            },
+            include_surrounding_whitespace = false,
+          },
+        },
+      }
+    end
+  },
+
   -- Lsp with mason integration
   {
     "williamboman/mason-lspconfig.nvim",
@@ -49,17 +116,25 @@ return {
   -- https://github.com/folke/trouble.nvim
   {
     "folke/trouble.nvim",
-    opts = {},
+    opts = {
+      keys = {
+        ["<cr>"] = "jump",
+        o = "jump_close",
+        q = "close",
+        r = "refresh",
+      }
+    },
+
     cmd = "Trouble",
     keys = {
       {
         "<leader>xd",
-        "<cmd>Trouble diagnostics toggle<cr>",
+        "<cmd>Trouble diagnostics toggle focus=true<cr>",
         desc = "Diagnostics",
       },
       {
         "<leader>xD",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<cr>",
         desc = "Buffer diagnostics",
       },
       {
@@ -69,12 +144,12 @@ return {
       },
       {
         "<leader>xl",
-        "<cmd>Trouble loclist toggle<cr>",
+        "<cmd>Trouble loclist toggle focus=true<cr>",
         desc = "Location list",
       },
       {
         "<leader>xq",
-        "<cmd>Trouble qflist toggle<cr>",
+        "<cmd>Trouble qflist toggle focus=true<cr>",
         desc = "Quickfix list",
       },
     },

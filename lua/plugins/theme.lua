@@ -1,60 +1,28 @@
 return {
-  -- Catppuccin theme
-  -- https://github.com/catppuccin/nvim
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    config = function()
-      require("catppuccin").setup({
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
-        background = { -- :h background
-          light = "latte",
-          dark = "mocha",
-        },
-        transparent_background = false,
-        show_end_of_buffer = false,
-        term_colors = false,
-        dim_inactive = {
-          enabled = false,
-          shade = "dark",
-          percentage = 0.15,
-        },
-        no_italic = false,
-        no_bold = false,
-        no_underline = false,
-        styles = {
-          comments = { "italic" },
-          conditionals = { "italic" },
-          loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = {},
-        },
-        color_overrides = {},
-        custom_highlights = {},
-        default_integrations = true,
-        integrations = {
-          cmp = true,
-          gitsigns = true,
-          nvimtree = true,
-          treesitter = true,
-          notify = false,
-          mini = {
-            enabled = true,
-            indentscope_color = "",
-          },
-        },
-      })
+  -- Vague
+  -- https://github.com/vague2k/vague.nvim
+  { 
+    "vague2k/vague.nvim",
 
-      -- Set the colorscheme
-      vim.cmd.colorscheme("catppuccin")
-    end,
+    config = function () 
+      vim.cmd [[colorscheme vague]]
+    end
+  },
+
+  -- To the line of identification of place upper
+  -- https://github.com/utilyre/barbecue.nvim
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+
+    config = function() 
+      require("barbecue").setup({})
+    end
   },
 
   -- Identation helper plugin
@@ -114,7 +82,6 @@ return {
         sections = {
           lualine_a = {'mode'},
           lualine_b = {'branch', 'diff', 'diagnostics'},
-          lualine_c = {'filename'},
           lualine_x = {'encoding', 'fileformat', 'filetype'},
           lualine_y = {'progress'},
           lualine_z = {'location'}
@@ -209,7 +176,20 @@ return {
       triggers = {
         { "<leader>", mode = { "n", "v" } }
       },
+
+      win = {
+        border = "rounded",
+      },
+
     }
+  },
+
+  -- Colorizer
+  {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = { -- set to setup table
+    },
   },
 
   -- Cursor line
@@ -221,15 +201,27 @@ return {
       require('nvim-cursorline').setup {
         cursorline = {
           enable = false,
-          timeout = 1000,
+          timeout = 3000,
           number = false,
         },
         cursorword = {
           enable = true,
-          min_length = 3,
+          min_length = 2,
           hl = { underline = true },
         }
       }
+    end
+  },
+
+  -- Tabs in the top, with navigation
+  -- https://github.com/akinsho/bufferline.nvim
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+
+    config = function()
+      require('bufferline').setup({})
     end
   },
 

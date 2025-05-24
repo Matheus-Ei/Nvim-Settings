@@ -26,12 +26,6 @@ function M.systemRegisterCutVisual()
 end
 
 
--- Duplicate the current line
-function M.duplicateLine()
-  vim.cmd('normal yyp')
-end
-
-
 function M.config()
   -- For the normal mode 
   vim.keymap.set('n', '<M-x>', M.systemRegisterCut, {})
@@ -42,8 +36,9 @@ function M.config()
   vim.keymap.set('v', '<M-x>', M.systemRegisterCutVisual, {})
   vim.keymap.set('v', '<M-c>', M.systemRegisterCopyVisual, {})
 
-  -- Duplicate the current line
-  vim.keymap.set('n', '<M-d>', M.duplicateLine, {})
+  -- Duplicate
+  vim.keymap.set({ "n" }, "<M-d>", "<CMD>LineDuplicate +1<CR>", {})
+  vim.keymap.set({ "v" }, "<M-d>" ,"<CMD>VisualDuplicate +1<CR>", {})
 end
 
 

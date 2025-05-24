@@ -1,22 +1,16 @@
 local M = {}
 
-
-function M.moveLineDown()
-  vim.cmd('normal 0')
-  vim.cmd('normal dd')
-  vim.cmd('normal p')
-end
-
-function M.moveLineUp()
-  vim.cmd('normal 0')
-  vim.cmd('normal dd')
-  vim.cmd('normal k')
-  vim.cmd('normal P')
-end
+local opts = { noremap = true, silent = true }
 
 function M.config()
-  vim.keymap.set('n', '<C-j>', M.moveLineDown, {})
-  vim.keymap.set('n', '<C-k>', M.moveLineUp, {})
+  vim.keymap.set('n', '<C-j>', ':MoveLine 1<CR>', opts)
+  vim.keymap.set('n', '<C-k>', ':MoveLine -1<CR>', opts)
+
+  vim.keymap.set('v', '<C-j>', ':MoveBlock 1<CR>', opts)
+  vim.keymap.set('v', '<C-k>', ':MoveBlock -1<CR>', opts)
+
+  vim.keymap.set('v', '<C-l>', ':MoveHBlock 1<CR>', opts)
+  vim.keymap.set('v', '<C-h>', ':MoveHBlock -1<CR>', opts)
 end
 
 return M

@@ -9,6 +9,46 @@ return {
     end
   },
 
+  -- Git integration 
+  -- https://github.com/kdheepak/lazygit.nvim?tab=readme-ov-file
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+    },
+
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+
+    keys = {
+        { "<leader>v", "<cmd>LazyGit<cr>", desc = "Git" }
+    }
+  },
+
+  -- Scroll bar left
+  {
+    "petertriho/nvim-scrollbar",
+
+    config = function()
+      require("scrollbar").setup({})
+    end
+  },
+
+  -- Move lines around
+  {
+    "hinell/move.nvim",
+  },
+
+  {
+    "hinell/duplicate.nvim"
+  },
+
   -- Autosave
   -- https://github.com/okuuva/auto-save.nvim
   {
@@ -53,10 +93,12 @@ return {
             require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
+
         window = {
-          -- completion = cmp.config.window.bordered(),
-          -- documentation = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
+
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -64,11 +106,14 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
+
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
-          { name = "luasnip" }, -- For luasnip users.
-        }, {
+          { name = "luasnip" },
+          { name = "diag-codes" },
+        },
+          {
             { name = "buffer" },
             { name = "path" },
           }),
