@@ -9,6 +9,31 @@ return {
     end
   },
 
+  -- Copilot
+  -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {},
+
+    keys = {
+      { "<leader>z", ":CopilotChat<CR>", mode='n', desc = "Copilot Chat" },
+      { "<leader>zc", ":CopilotChat<CR>", mode='v', desc = "Copilot Chat" },
+      { "<leader>ze", ":CopilotChatExplain<CR>", mode='v', desc = "Copilot Chat Explain" },
+      { "<leader>zr", ":CopilotChatReview<CR>", mode='v', desc = "Copilot Chat Review" },
+      { "<leader>zf", ":CopilotChatFix<CR>", mode='v', desc = "Copilot Chat Fix" },
+      { "<leader>zo", ":CopilotChatOptimize<CR>", mode='v', desc = "Copilot Chat Optimize" },
+      { "<leader>zd", ":CopilotChatDocs<CR>", mode='v', desc = "Copilot Chat Docs" },
+      { "<leader>zt", ":CopilotChatTest<CR>", mode='v', desc = "Copilot Chat Test" },
+    }
+  },
+
   -- Git integration 
   -- https://github.com/kdheepak/lazygit.nvim?tab=readme-ov-file
   {

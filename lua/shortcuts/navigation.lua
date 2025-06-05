@@ -43,8 +43,8 @@ end
 function M.buffers()
   vim.keymap.set("n", "<Leader>b", function() vim.cmd('lua require("buffer_manager.ui").toggle_quick_menu()') end, { desc = "Buffer manager" })
 
-  vim.keymap.set("n", "<M-p>", function() vim.cmd('lua require("buffer_manager.ui").nav_prev()') end, {})
-  vim.keymap.set("n", "<M-n>", function() vim.cmd('lua require("buffer_manager.ui").nav_next()') end, {})
+  vim.keymap.set("n", "<M-p>", function() vim.cmd('BufferLineCyclePrev') end, {})
+  vim.keymap.set("n", "<M-n>", function() vim.cmd('BufferLineCycleNext') end, {})
 
   vim.keymap.set( { 'n', 'v' } , '<M-k>', function() vim.cmd('bdelete') end, {} )
 end
