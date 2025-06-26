@@ -10,6 +10,12 @@ return {
   },
 
   -- Copilot
+  -- https://github.com/github/copilot.vim
+  {
+    "github/copilot.vim"
+  },
+
+  -- Copilot chat
   -- https://github.com/CopilotC-Nvim/CopilotChat.nvim
   {
     "CopilotC-Nvim/CopilotChat.nvim",
