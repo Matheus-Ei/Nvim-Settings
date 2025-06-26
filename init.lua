@@ -1,3 +1,5 @@
+-- https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#keybinding
+
 -- Set the tabs correctly
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
