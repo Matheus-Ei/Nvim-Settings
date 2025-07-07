@@ -16,6 +16,25 @@ return {
 	  "L3MON4D3/LuaSnip",
 	  version = "v2.*",
 	  build = "make install_jsregexp",
+
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_lua").lazy_load({paths = "./lua/snippets/"})
+
+      local ls = require("luasnip")
+
+      ls.setup({
+        update_events = {"TextChanged", "TextChangedI"},
+        enable_autosnippets = true,
+        store_selection_keys = "<Tab>",
+      })
+    end,
+
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+
+    event = "InsertEnter",
   },
 
   -- Treesitter textobjects
