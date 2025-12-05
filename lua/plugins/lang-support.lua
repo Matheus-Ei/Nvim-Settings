@@ -9,9 +9,73 @@ return {
     end
   },
 
+  -- Todo messages
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+
+    config = function() 
+      require('todo-comments').setup({});
+    end
+  },
+
+  -- Git blame and inline
+  {
+    'lewis6991/gitsigns.nvim',
+
+    config = function()
+      require('gitsigns').setup({
+        signs = {
+          add          = { text = '│' },
+          change       = { text = '│' },
+          delete       = { text = '_' },
+          topdelete    = { text = '‾' },
+          changedelete = { text = '~' },
+          untracked    = { text = '┆' },
+        },
+
+        signcolumn = true,
+        numhl      = false,
+        linehl     = false,
+        word_diff  = false,
+        watch_gitdir = {
+          interval = 1000,
+          follow_files = true
+        },
+
+        attach_to_untracked = true,
+        current_line_blame = true,
+
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = 'eol',
+          delay = 1000,
+          ignore_whitespace = false,
+        },
+
+        current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+      })
+    end
+  },
+
+  -- Resolve git conflicts
+  {
+    'akinsho/git-conflict.nvim',
+    version = "*",
+    config = function()
+      require('git-conflict').setup({
+        default_mappings = true,
+        default_commands = true,
+        disable_diagnostics = false,
+        highlights = {
+          incoming = 'DiffAdd',
+          current = 'DiffText',
+        }
+      })
+    end
+  },
 
   -- Luasnip
-  --
   {
 	  "L3MON4D3/LuaSnip",
 	  version = "v2.*",
@@ -119,13 +183,13 @@ return {
   {
     "neovim/nvim-lspconfig",
 
-    config = function()
+--[[     config = function()
       local lspconfig = require("lspconfig")
 
       -- Setup for each language
       lspconfig.ast_grep.setup({})
       lspconfig.tailwindcss.setup({})
-    end
+    end ]]
   },
 
   -- To Auto-close tags html and jsx

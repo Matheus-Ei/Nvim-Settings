@@ -4,6 +4,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
+    commit = "51907bab68863b78696446aae3ea4904c296e189",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -65,6 +66,54 @@ return {
         },
       })
     end
+  },
+
+  -- To use remote editing
+  {
+    'nosduco/remote-sshfs.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+
+    opts = {
+      connections = {
+        sshfs_args = { 
+          '-o reconnect', 
+          '-o ConnectTimeout=5',
+          "-o", "cache=yes",
+          "-o", "kernel_cache", 
+          "-o", "compression=yes",
+          "-o", "Ciphers=aes128-gcm@openssh.com",
+          "-o", "reconnect",
+          "-o", "ServerAliveInterval=15",
+          "-o", "ServerAliveCountMax=3",
+          "-o", "cache_timeout=115200",
+          "-o", "attr_timeout=115200"
+        },
+      },
+
+      mounts = {
+        base_dir = vim.fn.expand '~/.sshfs/', -- Where will be mount
+        unmount_on_exit = true,
+      },
+
+      ui = {
+        confirm = {
+          connect = false,
+          change_dir = false,
+        }
+      }
+    },
+
+    config = function(_, opts)
+      require('remote-sshfs').setup(opts)
+      require('telescope').load_extension 'remote-sshfs'
+    end,
+
+    keys = {
+      -- Connection management
+      { '<leader>ec', function() require('remote-sshfs.api').connect() end, desc = 'Connect to Server' },
+      { '<leader>ed', function() require('remote-sshfs.api').disconnect() end, desc = 'Disconnect' },
+      { '<leader>ee', function() require('remote-sshfs.api').edit() end, desc = 'Edit Config' },
+    }
   },
 
   -- Telescope
@@ -132,6 +181,7 @@ return {
   -- https://github.com/GnikDroy/projections.nvim?tab=readme-ov-file
   {
     'gnikdroy/projections.nvim',
+    branch = 'pre_release',
     config = function()
       require("projections").setup({
         workspaces = {

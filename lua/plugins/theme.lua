@@ -1,11 +1,14 @@
 return {
-  -- Vague
+  -- Theme
   -- https://github.com/vague2k/vague.nvim
-  { 
-    "vague2k/vague.nvim",
+  -- https://github.com/scottmckendry/cyberdream.nvim
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
 
-    config = function () 
-      vim.cmd [[colorscheme vague]]
+    config = function ()
+      vim.cmd [[colorscheme cyberdream]]
     end
   },
 
@@ -20,7 +23,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
 
-    config = function() 
+    config = function()
       require("barbecue").setup({})
     end
   },
@@ -111,16 +114,30 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = "all",
+        ensure_installed = {
+          "bash",
+          "c",
+          "cpp",
+          "html",
+          "javascript",
+          "json",
+          "lua",
+          "python",
+          "typescript",
+          "css",
+          "tsx",
+          "yaml",
+          "markdown"
+        },
         ignore_install = {"hoon"},
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
       })
+
       require'nvim-treesitter.configs'.setup {
         ensure_installed = {
-          "bash", "c", "cpp", "html", "javascript", "json", "lua",
-          "python", "typescript", "css", "go", "rust", "java"
+          "bash", "c", "cpp", "html", "javascript", "json", "lua", "python", "typescript", "css"
         },
 
         auto_install = true,
