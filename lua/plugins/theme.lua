@@ -2,13 +2,14 @@ return {
   -- Theme
   -- https://github.com/vague2k/vague.nvim
   -- https://github.com/scottmckendry/cyberdream.nvim
+  -- https://github.com/folke/tokyonight.nvim
   {
-    "scottmckendry/cyberdream.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
 
     config = function ()
-      vim.cmd [[colorscheme cyberdream]]
+      vim.cmd[[colorscheme tokyonight]]
     end
   },
 
@@ -109,71 +110,17 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    lazy = false,
 
     config = function ()
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
+      require('nvim-treesitter.config').setup({
         ensure_installed = {
-          "bash",
-          "c",
-          "cpp",
-          "html",
-          "javascript",
-          "json",
-          "lua",
-          "python",
-          "typescript",
-          "css",
-          "tsx",
-          "yaml",
-          "markdown"
+          "bash", "c", "cpp", "html", "javascript", "json", "lua",
+          "python", "typescript", "css", "tsx", "yaml", "markdown"
         },
-        ignore_install = {"hoon"},
-        sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
       })
-
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = {
-          "bash", "c", "cpp", "html", "javascript", "json", "lua", "python", "typescript", "css"
-        },
-
-        auto_install = true,
-
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-
-        indent = {
-          enable = true
-        },
-
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            node_decremental = "grm",
-            scope_incremental = "grc",
-          },
-        },
-
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-            },
-          },
-        },
-      }
     end
   },
 
@@ -247,12 +194,20 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-
     opts = {},
-
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          require("notify").setup({
+            timeout = 3000,
+            max_width = 50,
+            render = "compact",
+            stages = "fade",
+          })
+        end,
+      }
     }
   }
 }

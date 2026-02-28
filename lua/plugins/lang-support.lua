@@ -9,6 +9,26 @@ return {
     end
   },
 
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+    config = function()
+      local lspconfig = require("lspconfig")
+      
+      require("mason-lspconfig").setup({
+        ensure_installed = { "ast_grep", "tailwindcss", "lua_ls", "phpactor", "vtsls" },
+        function(server_name)
+            lspconfig[server_name].setup({})
+        end,
+      })
+    end
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+  },
+
   -- Todo messages
   {
     "folke/todo-comments.nvim",
@@ -61,7 +81,6 @@ return {
   -- Resolve git conflicts
   {
     'akinsho/git-conflict.nvim',
-    version = "*",
     config = function()
       require('git-conflict').setup({
         default_mappings = true,
@@ -99,97 +118,6 @@ return {
     },
 
     event = "InsertEnter",
-  },
-
-  -- Treesitter textobjects
-  -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        textobjects = {
-          lsp_interop = {
-            enable = true,
-            border = 'none',
-
-            floating_preview_opts = {},
-            peek_definition_code = {
-              ["<leader>df"] = "@function.outer",
-              ["<leader>dF"] = "@class.outer",
-            },
-          },
-
-          swap = {
-            enable = false,
-            swap_next = {
-              ["<leader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>A"] = "@parameter.inner",
-            },
-          },
-
-          move = {
-            enable = true,
-            set_jumps = true,
-
-            goto_next = {
-              ["<leader>mj"] = "@function.outer",
-              -- ["<leader>mcj"] = "@conditional.outer",
-              -- ["<leader>mJ"] = "@class.outer",
-            },
-
-            goto_previous = {
-              ["<leader>mk"] = "@function.outer",
-              -- ["<leader>mK"] = "@class.outer",
-              -- ["<leader>mdk"] = "@conditional.outer",
-            }
-          },
-
-          select = {
-            enable = true,
-
-            lookahead = true,
-
-            keymaps = {
-              ["<leader>fo"] = "@function.outer",
-              ["<leader>fi"] = "@function.inner",
-            },
-            selection_modes = {
-              ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V', -- linewise
-              ['@class.outer'] = '<c-v>', -- blockwise
-            },
-            include_surrounding_whitespace = false,
-          },
-        },
-      }
-    end
-  },
-
-  -- Lsp with mason integration
-  {
-    "williamboman/mason-lspconfig.nvim",
-
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "ast_grep", "tailwindcss" },
-      })
-    end
-  },
-
-  -- Lsp config
-  {
-    "neovim/nvim-lspconfig",
-
---[[     config = function()
-      local lspconfig = require("lspconfig")
-
-      -- Setup for each language
-      lspconfig.ast_grep.setup({})
-      lspconfig.tailwindcss.setup({})
-    end ]]
   },
 
   -- To Auto-close tags html and jsx
