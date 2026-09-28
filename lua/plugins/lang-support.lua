@@ -14,9 +14,9 @@ return {
     dependencies = { "neovim/nvim-lspconfig" },
     config = function()
       local lspconfig = require("lspconfig")
-      
+
       require("mason-lspconfig").setup({
-        ensure_installed = { "ast_grep", "tailwindcss", "lua_ls", "phpactor", "vtsls" },
+        ensure_installed = { "ast_grep", "tailwindcss", "lua_ls", "phpactor", "vtsls", "pyright", "ruff", "clangd" },
         function(server_name)
             lspconfig[server_name].setup({})
         end,

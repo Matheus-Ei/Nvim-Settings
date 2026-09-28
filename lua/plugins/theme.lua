@@ -4,12 +4,12 @@ return {
   -- https://github.com/scottmckendry/cyberdream.nvim
   -- https://github.com/folke/tokyonight.nvim
   {
-    "folke/tokyonight.nvim",
+    "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
 
     config = function ()
-      vim.cmd[[colorscheme tokyonight]]
+      vim.cmd[[colorscheme cyberdream]]
     end
   },
 
@@ -116,9 +116,9 @@ return {
       require('nvim-treesitter.config').setup({
         ensure_installed = {
           "bash", "c", "cpp", "html", "javascript", "json", "lua",
-          "python", "typescript", "css", "tsx", "yaml", "markdown"
+          "python", "typescript", "css", "tsx", "yaml", "markdown", "vim"
         },
-        highlight = { enable = true },
+        highlight = { enable = true, disable = { "vim" } },
         indent = { enable = true },
       })
     end
@@ -194,7 +194,13 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      cmdline = {
+        format = {
+          cmdline = { pattern = "^:", icon = "", lang = "vim_regex" },
+        },
+      },
+    },
     dependencies = {
       "MunifTanjim/nui.nvim",
       {
